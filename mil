@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # adatok beolvasasa es tomb feltoltese
 declare -a tomb=()
 i=0
@@ -6,7 +7,7 @@ input="./kerdes.txt"
 while IFS= read -r line
 do
 tomb[i]=$line
-i=$i+1
+i=$[i+1]
 done < "$input"
 
 declare -a valasz=()
@@ -15,8 +16,13 @@ input="./valasz.txt"
 while IFS= read -r line
 do
 valasz[j]=$line
-j=$j+1
+j=$[j+1]
 done < "$input"
+
+#random kerdes valsztas
+y=$i
+	sor=($(shuf -i 0-$y -n 15))
+	echo "${sor[@]}"
 
 #kezzdo osszeg
 m=0
@@ -26,29 +32,22 @@ do
 clear
 printf "Legyen ön is milliomos!				 "
 printf '|%-4s|\n' "Jellenlegi nyeremény:"$m
-#random kerdes valsztas
 
-	y=$i
-	DIV=$((y))
-	r=$(($RANDOM%$DIV))
-	echo $r
-
-#echo $r
 printf "				|"${kilep}". KÉRDÉS!|"'\n'
 echo
-echo ${tomb[r]}
+echo ${tomb[sor[kilep]]}
 j=0
 for j in 0 1 2 3
 do
-eval echo ${valasz[r*5+j]}
+eval echo ${valasz[sor[kilep]*5+j]}
 done
 #megold
-#eval echo ${valasz[r*5+4]}
+#eval echo ${valasz[sor[kilep]*5+4]}
 
 #valasz
 read -p "válasz: "  be
 
-if [ "${be^^}" == "${valasz[r*5+4]}"  ]; then
+if [ "${be^^}" == "${valasz[sor[kilep]*5+4]}"  ]; then
 	echo "Helyes válasz!"
 	sleep 2
 
@@ -60,7 +59,7 @@ fi
 	kilep=$[kilep+1]
 else
 	echo "Játék vége :("
-	eval echo "Jó megoldás: " ${valasz[r*5+4]}
+	eval echo "Jó megoldás: " ${valasz[sor[kilep]*5+4]}
 	kilep=15
 	echo "Nyeremény: "$m
 fi
@@ -68,8 +67,7 @@ done
 
 #todo
 #nyeremeny vesztes fix potok
-#random ami volt mar ne legyen
 #segitsegek
 #help info jatekmenet
 #megallas lehehoseg
-
+#ha megnyeri a 15 kerdest

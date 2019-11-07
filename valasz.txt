@@ -33,3 +33,23 @@ B.	latinul
 C.	anyanyelven
 D.	angolul
 B
+A.	Beherovka
+B.	Vodka
+C.	Ouzo
+D.	Pálinka
+C
+A.	Küllők
+B.	Kétéltű
+C.	Puhatestű
+D.	Emlős
+B
+A.	Robert Fulton
+B.	George Stephenson
+C.	James Watt
+D.	Thomas Edison
+C
+A.	Elveszett paradicsom
+B.	Szentivánéji álom
+C.	Sok hűhó semmiért
+D.	Ahogy tetszik
+A
