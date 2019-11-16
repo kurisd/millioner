@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# adatok beolvasasa es tomb feltoltese
+declare -a tomb=()
+i=0
+input="./kerdesek.txt"
+while IFS= read -r line
+do
+tomb[i]=$line
+i=$[i+1]
+done < "$input"
+i=$[i-5]
+#random kerdes valsztas
+y=$[i/6]
+	sor=($(shuf -i 0-$y -n 15))
+	echo "${sor[@]}"
+
+#kezzdo osszeg
+m=0
+kilep=1
+while [ "$kilep" != "15" ]
+do
+clear
+printf "Legyen ön is milliomos!				 "
+printf '|%-4s|\n' "Jellenlegi nyeremény:"$m
+
+printf "				|"${kilep}". KÉRDÉS!|"'\n'
+echo
+echo ${tomb[sor[kilep]*6]}
+j=0
+for j in 0 1 2 3
+do
+sleep 1
+eval echo ${tomb[sor[kilep]*6+1+j]}
+done
+#megold
+#eval echo ${tomb[sor[kilep]*5+4]}
+
+#tomb
+read -p "válasz: "  be
+
+if [ "${be^^}" == "${tomb[sor[kilep]*6+5]}"  ]; then
+	echo "Helyes válasz!"
+	sleep 2
+
+if [ "$kilep" == "1" ]; then
+	m=5000
+else
+	m=$[m*2]
+fi
+	kilep=$[kilep+1]
+else
+	echo "Játék vége :("
+	eval echo "Jó megoldás: " ${tomb[sor[kilep]*6+5]}
+	kilep=15
+	echo "Nyeremény: "$m
+fi
+done
+
+#todo
+#nyeremeny vesztes fix potok
+#segitsegek
+#help info jatekmenet
+#megallas lehehoseg
+#ha megnyeri a 15 kerdest
