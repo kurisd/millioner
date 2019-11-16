@@ -18,7 +18,7 @@ y=$[i/6]
 #kezzdo osszeg
 m=0
 kilep=1
-while [ "$kilep" != "15" ]
+while [ "$kilep" != "16" ]
 do
 clear
 printf "Legyen ön is milliomos!				 "
@@ -38,28 +38,64 @@ done
 
 #tomb
 read -p "válasz: "  be
+#utmutato
+    if [ "${be^^}" == "H" ];then
+        clear
+        echo "Milliomos játék a választ A,B,C,D karakterekkel adhatja meg."
+        echo "Kis és nagy karakterekre nem érzékeny."
+        echo "H karakter a játék útmutatójához."
+        echo "Három segítség közül vállaszthat T mint telefonos"
+        echo "K mint közönség és F mint felelző, mindegyiket egyszer használhatja." 
+        echo "Kuris Dávid H3SQTV 2019"
+        read -p "Enter a folytatáshoz.. "  be
+        else
+#telefonos segitseg mindig jo
+            if [ "${be^^}" == "T" ];then
+                echo "${tomb[sor[kilep]*6+5]}. válaszleehtőség szerintem."
+    
+            read -p "Enter a folytatáshoz.. "  be
+            else
+#kozonseg kerdes
+            if [ "${be^^}" == "K" ];then
+            ran=($(shuf -i 1-4 -n 4))
+            elso=($(shuf -i 50-90 -n 1))
+            echo $[ran[0]]". válaszlehetőség "$elso"%"
+            masodik=($(shuf -i 1-$[100-elso] -n 1))
+            echo $[ran[1]]". válaszlehetőség "$masodik"%"
+            harmadik=($(shuf -i 1-$[100-(masodik+elso)] -n 1))
+            echo $[ran[2]]". válaszlehetőség "$harmadik"%"
+            negyedik=$[100-(elso+masodik+harmadik)]
+            echo $[ran[3]]". válaszlehetőség "$negyedik"%"
 
-if [ "${be^^}" == "${tomb[sor[kilep]*6+5]}"  ]; then
-	echo "Helyes válasz!"
-	sleep 2
+            read -p "Enter a folytatáshoz.. "  be
+            else
+#kiertekeles
+                if [ "${be^^}" == "${tomb[sor[kilep]*6+5]}"  ]; then
+                	echo "Helyes válasz!"
+                	sleep 2
 
-if [ "$kilep" == "1" ]; then
-	m=5000
-else
-	m=$[m*2]
-fi
-	kilep=$[kilep+1]
-else
-	echo "Játék vége :("
-	eval echo "Jó megoldás: " ${tomb[sor[kilep]*6+5]}
-	kilep=15
-	echo "Nyeremény: "$m
-fi
+                if [ "$kilep" == "1" ]; then
+                	m=5000
+                else
+                	m=$[m*2]
+                fi
+                	kilep=$[kilep+1]
+                    if [ $kilep == "16" ]; then
+                        echo "Gratulálunk megnyerte a főnyereményt!"
+                        sleep 2
+
+                    fi
+                else
+                	echo "Játék vége :("
+                	eval echo "Jó megoldás: " ${tomb[sor[kilep]*6+5]}
+                	kilep=16
+                	echo "Nyeremény: "$m
+                fi
+            fi
+        fi
+    fi
 done
 
 #todo
-#nyeremeny vesztes fix potok
-#segitsegek
-#help info jatekmenet
-#megallas lehehoseg
-#ha megnyeri a 15 kerdest
+#felezo
+#szep kiiras
