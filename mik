@@ -12,7 +12,7 @@ done < "$input"
 i=$[i-5]
 #random kerdes valsztas
 y=$[i/6]
-	sor=($(shuf -i 0-$y -n 15))
+	sor=($(shuf -i 0-$y -n 16))
 	echo "${sor[@]}"
 
 #kezzdo osszeg
@@ -99,3 +99,4 @@ done
 #todo
 #felezo
 #szep kiiras
+#tovabbi kerdesek es az elsot torolni kell
