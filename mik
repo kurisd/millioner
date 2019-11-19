@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # adatok beolvasasa es tomb feltoltese
 declare -a tomb=()
 i=0
@@ -21,10 +20,10 @@ kilep=1
 while [ "$kilep" != "16" ]
 do
 clear
-printf "Legyen ön is milliomos!	         H segítség        "
+printf "Legyen ön is milliomos!	                      "
 printf '|%-4s|\n' "Jellenlegi nyeremény:"$m
 
-printf "				|"${kilep}". KÉRDÉS!|"'\n'
+printf "				|"${kilep}". KÉRDÉS!|                      H segítség"'\n'
 echo
 echo ${tomb[sor[kilep]*6]}
 j=0
@@ -68,17 +67,10 @@ read -p "válasz: "  be
             printf "\x$(printf %x $[ran[2]]). válaszlehetőség $harmadik\n"
             negyedik=$[100-(elso+masodik+harmadik)]
             printf "\x$(printf %x $[ran[3]]). válaszlehetőség $negyedik\n"
-            
 #"
             read -p "Enter a folytatáshoz.. "  be
             else
 #kiertekeles
-            if [ "${be^^}" == "F" ];then
-                
-
-                read -p "Enter a folytatáshoz.. "  be
-                    else
-
                     if [ "${be^^}" == "${tomb[sor[kilep]*6+5]}"  ]; then
                     	echo "Helyes válasz!"
                     	sleep 2
@@ -91,6 +83,7 @@ read -p "válasz: "  be
                     	kilep=$[kilep+1]
                         if [ $kilep == "16" ]; then
                             echo "Gratulálunk megnyerte a főnyereményt!"
+                            echo "Nyereménye:"$m
                             sleep 2
 
                         fi
@@ -99,14 +92,8 @@ read -p "válasz: "  be
                     	eval echo "Jó megoldás: " ${tomb[sor[kilep]*6+5]}
                     	kilep=16
                     	echo "Nyeremény: "$m
-                    fi
                 fi
             fi
         fi
     fi
 done
-
-#todo
-#felezo
-#szep kiiras
-#tovabbi kerdesek es az elsot torolni kell

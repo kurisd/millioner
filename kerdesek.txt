@@ -1,9 +1,9 @@
-Mi a kedvenc gyumolcsom?
-A.	alma
-B.	korte
-C.	banan
-D.	szilva
-D
+Melyik évben született Széchényi István?
+A.	1799
+B.	1791
+C.	1801
+D.	1788
+B
 Melyik magyar király avattatta szenté I. Istvánt?
 A.	Könyves Kálmán
 B.	Szent László
@@ -94,3 +94,21 @@ B.	Rolling Stones
 C.	Bee Gees
 D.	Doors
 A
+Melyik évben adta ki II. András király az aranybullát?
+A.  1220
+B.  1333
+C.  1222
+D.  1330
+C
+Mi az Indiai Köztársaság fővárosa?
+A.  Mumbai
+B.  Bengaluru
+C.  Új-Delhi
+D.  Kalkutta
+C
+Milyen címmel jelent meg az ABBA együttes 1974-es lemeze?
+A.  Ring Ring
+B.  Waterloo
+C.  ABBA
+D.  Voulez-Vous
+B
