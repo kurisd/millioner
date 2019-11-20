@@ -17,6 +17,8 @@ y=$[i/6]
 #kezzdo osszeg
 m=0
 kilep=1
+tel=0
+koz=0
 while [ "$kilep" != "16" ]
 do
 clear
@@ -40,35 +42,47 @@ read -p "válasz: "  be
 #utmutato
     if [ "${be^^}" == "H" ];then
         clear
-        echo "Milliomos játék a választ A,B,C,D karakterekkel adhatja meg."
+        echo "Milliomos játékhoz a választ A,B,C,D karakterekkel adhatja meg."
         echo "Kis és nagy karakterekre nem érzékeny."
         echo "H karakter a játék útmutatójához."
-        echo "Három segítség közül vállaszthat T mint telefonos"
-        echo "K mint közönség és F mint felelző, mindegyiket egyszer használhatja." 
+        echo "Kettő segítség közül vállaszthat T mint telefonos"
+        echo "K mint közönség mindegyiket egyszer használhatja." 
         echo "Kuris Dávid H3SQTV 2019"
         read -p "Enter a folytatáshoz.. "  be
         else
 #telefonos segitseg mindig jo
             if [ "${be^^}" == "T" ];then
+            if [ "${tel}" == "1" ];then
+            echo "Már használtad ezt a segítséget"
+            read -p "Enter a folytatáshoz.. "  be
+            else
+                tel=1
                 echo "${tomb[sor[kilep]*6+5]}. válaszleehtőség szerintem."
     
             read -p "Enter a folytatáshoz.. "  be
+            fi
             else
 #kozonseg kerdes
             if [ "${be^^}" == "K" ];then
-            ran=($(shuf -i 65-68 -n 4))
-            
-            elso=($(shuf -i 50-90 -n 1))
-            printf "\x$(printf %x $[ran[0]]). válaszlehetőség $elso\n"
-            #echo $[ran[0]]". válaszlehetőség "$elso"%"
-            masodik=($(shuf -i 1-$[100-elso] -n 1))
-            printf "\x$(printf %x $[ran[1]]). válaszlehetőség $masodik\n"
-            harmadik=($(shuf -i 1-$[100-(masodik+elso)] -n 1))
-            printf "\x$(printf %x $[ran[2]]). válaszlehetőség $harmadik\n"
-            negyedik=$[100-(elso+masodik+harmadik)]
-            printf "\x$(printf %x $[ran[3]]). válaszlehetőség $negyedik\n"
-#"
-            read -p "Enter a folytatáshoz.. "  be
+                if [ "${koz}" == "1" ];then
+                echo "Már használtad ezt a segítséget"
+                read -p "Enter a folytatáshoz.. "  be
+                else
+
+                koz=1
+                ran=($(shuf -i 65-68 -n 4))
+                elso=($(shuf -i 50-90 -n 1))
+                printf "\x$(printf %x $[ran[0]]). válaszlehetőség $elso\n"
+                #echo $[ran[0]]". válaszlehetőség "$elso"%"
+                masodik=($(shuf -i 1-$[100-elso] -n 1))
+                printf "\x$(printf %x $[ran[1]]). válaszlehetőség $masodik\n"
+                harmadik=($(shuf -i 1-$[100-(masodik+elso)] -n 1))
+                printf "\x$(printf %x $[ran[2]]). válaszlehetőség $harmadik\n"
+                negyedik=$[100-(elso+masodik+harmadik)]
+                printf "\x$(printf %x $[ran[3]]). válaszlehetőség $negyedik\n"
+#"  
+                read -p "Enter a folytatáshoz.. "  be
+            fi
             else
 #kiertekeles
                     if [ "${be^^}" == "${tomb[sor[kilep]*6+5]}"  ]; then
