@@ -12,7 +12,7 @@ i=$[i-5]
 #random kerdes valsztas
 y=$[i/6]
 	sor=($(shuf -i 0-$y -n 16))
-	echo "${sor[@]}"
+#	echo "${sor[@]}"
 
 #kezzdo osszeg
 m=0

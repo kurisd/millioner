@@ -47,7 +47,7 @@ C.	Ouzo
 D.	Pálinka
 C
 Hová sorolható be a béka?
-A.	Küllők
+A.	Hüllők
 B.	Kétéltű
 C.	Puhatestű
 D.	Emlős
@@ -85,7 +85,7 @@ B
 Mi a rubeola magyar neve?
 A.	Rondakór
 B.	Ragyaverés
-C.	Rózsahinlő
+C.	Rózsahimlő
 D.	Rózsabimbó
 C
 Melyik együttes énekelt egy sárga tengeralattjáróról?
