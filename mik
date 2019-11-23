@@ -22,10 +22,10 @@ koz=0
 while [ "$kilep" != "16" ]
 do
 clear
-printf "Legyen ön is milliomos!	                      "
-printf '|%-4s|\n' "Jellenlegi nyeremény:"$m
+printf "Legyen ön is milliomos!	                                 "
+printf '|%-4s|\n' "Nyeremény:"$m
 
-printf "				|"${kilep}". KÉRDÉS!|                      H segítség"'\n'
+printf "		          	|"${kilep}". KÉRDÉS!|              H segítség"'\n'
 echo
 echo ${tomb[sor[kilep]*6]}
 j=0
