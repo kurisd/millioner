@@ -33,3 +33,15 @@ select h.neptun, vnev, knev, AVG(jegy) AS 'átlag' from hallgatok h inner join j
 /* megjegyzes inner join left join right join */
 select h.neptun, vnev, knev, AVG(CAST (jegy as float)) AS 'átlag' from hallgatok h inner join jegyek j on h.neptun=j.neptun group by h.neptun ,vnev ,knev; 
 select h.neptun, vnev, knev, sum(cast(jegy as float)*kredit)/SUM(kredit) AS 'átlag' from hallgatok h inner join jegyek j on h.neptun=j.neptun group by h.neptun ,vnev ,knev; 
+
+Select COUNT (Distinct neptun) from jegyek;
+select j.neptun from hallgatok h inner join jegyek j on h.neptun=j.neptun;
+select h.neptun from hallgatok h full join jegyek j on h.neptun=j.neptun;
+select * From hallgatok where neptun not in (Select neptun from jegyek); 
+select * from hallgatok where szdat like '%10'
+
+
+select jegy, vnev +' '+ knev as 'nev' from hallgatok h inner join jegyek j on h.neptun=j.neptun
+/*leggyakrabban kolcsonzott könyvek , legdragabb es legolcsobb termek szurese*/
+
+select * from hallgatok h full join jegyek j on h.neptun=j.neptun group by h.neptun;
