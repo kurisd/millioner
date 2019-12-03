@@ -57,15 +57,15 @@ select * from ETORZS a inner join FTORZS b on a.EKOD =b.FAZON;
 /*4. darab*/
 select a.EFIZDB, b.FCIM from ELOFIZ a inner join FTORZS b on a.FAZON = b.FAZON group by a.EFIZDB , b.FCIM;
 /*5. november*/
-select * from ETORZS a inner join ELOFIZ b on a.EKOD =b.EKOD where b.EKDATUM like '%11%';
+select * from ETORZS a inner join ELOFIZ b on a.EKOD =b.EKOD where b.EKDATUM like '%-11-%';
 /*darabszam*/
 select top 1 fcim , count (*) from elofiz were elofiz f azon group by fcim order by 2 desp
 
 CREATE VIEW view_name AS
 
 ftipus - tinyint 
-[ftipus] like [1..4];
+[ftipus] like '[1-4]';
 [fhdij] between 100 and 999999
 (datediff(year,[ESZDAT],getdate())>=(18))
+datediff or datediff or datediff [evdatum]
 [efizdb] between 1 and 999
-
