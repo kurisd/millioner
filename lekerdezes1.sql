@@ -69,3 +69,35 @@ ftipus - tinyint
 (datediff(year,[ESZDAT],getdate())>=(18))
 datediff or datediff or datediff [evdatum]
 [efizdb] between 1 and 999
+
+----------------------------------------------------------------------------
+
+/*3. gyoriek*/
+CREATE VIEW gyorielofizetok as select * from ETORZS where ETELEP like 'Győr';
+/*2. inform */
+CREATE VIEW informaciok as select c.ETELEP +' - '+c.ENEV as 'név és település', b.FCIM as 'magazin', b.FHDIJ as 'ár'  from ELOFIZ a inner join FTORZS b on a.FAZON=b.FAZON inner join ETORZS c on a.EKOD=c.EKOD;
+
+--ugyan az csak futatva 
+select c.ETELEP +' - '+c.ENEV as 'név és település', b.FCIM as 'magazin', b.FHDIJ as 'ár'  from ELOFIZ a inner join FTORZS b on a.FAZON=b.FAZON inner join ETORZS c on a.EKOD=c.EKOD  order by b.FHDIJ desc;
+
+select * from ETORZS a inner join FTORZS b on a.EKOD =b.FAZON;
+/*4. darab*/
+select top 1 a.EFIZDB, b.FCIM from ELOFIZ a inner join FTORZS b on a.FAZON = b.FAZON group by a.EFIZDB , b.FCIM order by a.EFIZDB desc;
+/*5. november*/
+select * from ETORZS a inner join ELOFIZ b on a.EKOD =b.EKOD where b.EKDATUM like '%-11-%';
+/*harom tabla ossze kapcsolasa*/
+select * from ELOFIZ a inner join FTORZS b on a.FAZON=b.FAZON inner join ETORZS c on a.EKOD=c.EKOD;
+
+/*darabszam
+select top 1 fcim , count (*) from elofiz were elofiz f azon group by fcim order by 2 desc;
+*/
+CREATE VIEW view_name AS
+/*6.
+ftipus - tinyint 
+[ftipus] like '[1-4]';
+[fhdij] between 100 and 999999
+(datediff(year,[ESZDAT],getdate())>=(18))
+datediff or datediff or datediff [evdatum]
+[efizdb] between 1 and 999
+*/
+
