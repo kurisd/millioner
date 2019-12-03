@@ -45,3 +45,27 @@ select jegy, vnev +' '+ knev as 'nev' from hallgatok h inner join jegyek j on h.
 /*leggyakrabban kolcsonzott könyvek , legdragabb es legolcsobb termek szurese*/
 
 select * from hallgatok h full join jegyek j on h.neptun=j.neptun group by h.neptun;
+
+-------------------------------------------------------------------------
+
+/*3. gyoriek*/
+CREATE VIEW 'győriek' select * from ETORZS where ETELEP like 'Győr';
+/*2. inform */
+select * from ELOFIZ a inner join ETORZS b on a.FAZON = b.EKOD;
+
+select * from ETORZS a inner join FTORZS b on a.EKOD =b.FAZON;
+/*4. darab*/
+select a.EFIZDB, b.FCIM from ELOFIZ a inner join FTORZS b on a.FAZON = b.FAZON group by a.EFIZDB , b.FCIM;
+/*5. november*/
+select * from ETORZS a inner join ELOFIZ b on a.EKOD =b.EKOD where b.EKDATUM like '%11%';
+/*darabszam*/
+select top 1 fcim , count (*) from elofiz were elofiz f azon group by fcim order by 2 desp
+
+CREATE VIEW view_name AS
+
+ftipus - tinyint 
+[ftipus] like [1..4];
+[fhdij] between 100 and 999999
+(datediff(year,[ESZDAT],getdate())>=(18))
+[efizdb] between 1 and 999
+
